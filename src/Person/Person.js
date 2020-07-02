@@ -1,5 +1,5 @@
 import React from 'react';
-import person from  "./Person.css";
+import "./Person.css";
 
 const Person = (props) => {
     const styles = {
@@ -10,7 +10,7 @@ const Person = (props) => {
       <div>
         <p>Am <span>{props.name}</span> and I'm {props.age} </p>
         <p> {props.children} </p>
-        <div className="Person">
+        <div className="Person" onClick={props.click}>
           <input 
               type="text" 
               value={props.name} 

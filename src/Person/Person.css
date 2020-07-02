@@ -1,11 +1,11 @@
-/* .Person {
-    color: white;
+.Person {
+    margin: auto;
 }
 
 .Person:hover {
+    border: 1px solid darkorange;
     background-color: darkorange;
+    max-width: 50%;
     color: white;
-    max-width: 60%;
-    margin: auto;
     cursor: pointer;
-} */
+}

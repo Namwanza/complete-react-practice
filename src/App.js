@@ -38,6 +38,14 @@ class App extends Component {
     })
   }
 
+  deletePersonHandler = () => {
+    const myPerson = [...this.state.persons];
+    myPerson.shift()
+    this.setState({
+      persons: myPerson
+    })
+  }
+
   render () {
     // line styles
     const buttonOne = {
@@ -72,7 +80,7 @@ class App extends Component {
                       age = {person.age}
                       key = {person.id}
                       change = {(event) => this.nameChangedHandler(event, person.id)}
-                      // click = { () => this.nameChangedHandler("Hanifah")}
+                      click = {() => this.deletePersonHandler(person.id)}
                   > 
                     Hey I can also render
                   </Person>
