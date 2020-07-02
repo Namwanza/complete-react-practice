@@ -1,14 +1,29 @@
 import React from 'react';
-import Student from '../Student/Student'
+import person from  "./Person.css";
 
 const Person = (props) => {
+    const styles = {
+        margin: '5px',
+        textAlign: 'center'
+    }
     return (
       <div>
-         <h1>Hey I'm a Component Person</h1>
-         <span>{props.assignment}</span> /
-         <span> {props.homework} </span>/
-         <span> {props.children} </span>
-         <Student age = {24} />
+        <p>Am <span>{props.name}</span> and I'm {props.age} </p>
+        <p> {props.children} </p>
+        <div className="Person">
+          <input 
+              type="text" 
+              value={props.name} 
+              onChange={props.change}
+              style={styles}
+          />
+          <input 
+              type="text" 
+              value={props.age} 
+              style={styles}
+              onChange={props.change}
+          />
+          </div>
       </div>
     )
 }
