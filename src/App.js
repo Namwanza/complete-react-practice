@@ -73,14 +73,14 @@ class App extends Component {
           this.state.showPerson ? 
           <div>
             {
-              this.state.persons.map(person => {
+              this.state.persons.map((person, index) => {
                 return (
                   <Person 
                       name = {person.name}
                       age = {person.age}
                       key = {person.id}
                       change = {(event) => this.nameChangedHandler(event, person.id)}
-                      click = {() => this.deletePersonHandler(person.id)}
+                      click = {() => this.deletePersonHandler(index)}
                   > 
                     Hey I can also render
                   </Person>
