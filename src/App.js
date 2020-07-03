@@ -60,6 +60,31 @@ class App extends Component {
 
     const totalAge = this.state.persons.reduce((age, person) => age + person.age, 0)
 
+    let personDetails = null;
+
+    if (this.state.showPerson) { 
+      personDetails = <div>
+        {
+          this.state.persons.map((person, index) => {
+            return (
+              <Person 
+                  name = {person.name}
+                  age = {person.age}
+                  key = {person.id}
+                  change = {(event) => this.nameChangedHandler(event, person.id)}
+                  click = {() => this.deletePersonHandler(index)}
+              > 
+                Hey I can also render
+              </Person>
+            )
+          })
+        }
+      </div>
+    }else { 
+      personDetails = <div>
+        Total Age = <strong>{totalAge}</strong>
+      </div>
+    }
     
     return (
       <div className="App">
@@ -68,32 +93,7 @@ class App extends Component {
             style={buttonOne}
             onClick = {this.showPersonHandler}
             >switch Names</button>
-
-        {
-          this.state.showPerson ? 
-          <div>
-            {
-              this.state.persons.map((person, index) => {
-                return (
-                  <Person 
-                      name = {person.name}
-                      age = {person.age}
-                      key = {person.id}
-                      change = {(event) => this.nameChangedHandler(event, person.id)}
-                      click = {() => this.deletePersonHandler(index)}
-                  > 
-                    Hey I can also render
-                  </Person>
-                )
-              })
-            }
-          </div>
-          : 
-          <div>
-            Total Age = <strong>{totalAge}</strong>
-          </div>
-        }
-       
+       {personDetails}
       </div>
     );
   }
