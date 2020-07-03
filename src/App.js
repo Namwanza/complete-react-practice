@@ -4,26 +4,45 @@ import Person from './Person/Person'
 
 class App extends Component {
   state = {
-    name: "Skyla"
+    student: [
+      {id: 'kdkdk', name: 'Roger', age: 15},
+      {id: 'heyeje', name: 'Ronnie', age: 17}
+    ]
   }
 
-  nameChangedHandler = () => {
+  nameChangedHandler = (event, id) => {
+    const studentIndex = this.state.student.findIndex(person => {
+      return person.id === id;
+    })
+
+    const myStudent = {
+      ...this.state.student[studentIndex]
+    }
+
+    myStudent.name = event.target.value;
+    const displayStudent = [...this.state.student];
+    displayStudent[studentIndex] = myStudent;
     this.setState({
-      name: "Vanpretty"
+      student: displayStudent
     })
   }
 
   render () {
     return (
       <div className="App">
-        <span> {this.state.name} </span>
-        <button onClick = {this.nameChangedHandler} >switch Names</button>
-        <Person 
-          assignment = "Computer Science" 
-          homework = "Arithematic operators"
-        >
-          Hey am a child
-        </Person>
+        {
+          this.state.student.map(p => {
+            return (
+              <Person 
+                name = {p.name} 
+                changed = {(event) => this.nameChangedHandler(event, p.id)}
+                key = {p.id}
+              />
+            );
+          })
+        }
+        {/* <Person name = "Roger" /> */}
+        {/* <Person name = "Ronnie" /> */}
       </div>
     );
   }
