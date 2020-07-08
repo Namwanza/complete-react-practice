@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'
+import Person from './Person/Person';
+import Button from '@material-ui/core/Button';
+import styled from 'styled-components';
+
+const StyledButton = styled.button `
+  background-color: ${props => props.alt ? 'green' : 'red'};
+  border: 1px solid blue;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black;
+    border-radius: 5px;
+  }
+`;
 
 class App extends Component {
   state = {
@@ -11,12 +30,18 @@ class App extends Component {
       {id: 'row4', name: 'Willy', age: 22},
       {id: 'row5', name: 'Henry', age: 26}
     ],
-    showPerson: true
+    showPerson: false
   }
 
   showPersonHandler = () => {
     this.setState({
-      showPerson: !this.state.showPerson
+      showPerson: true
+    })
+  }
+
+  hidePersonHandler = () => {
+    this.setState({
+      showPerson: false
     })
   }
 
@@ -39,16 +64,6 @@ class App extends Component {
   }
 
   render () {
-    // line styles
-    const buttonOne = {
-      backgroundColor: 'green',
-      padding: '10px',
-      margin: '10px',
-      border: '1px solid green',
-      borderRadius: '5px',
-      color: 'white',
-      fontSize: '15px'
-    }
 
     const totalAge = this.state.persons.reduce((age, person) => age + person.age, 0)
 
@@ -56,10 +71,19 @@ class App extends Component {
     return (
       <div className="App">
          <h1>React App</h1>
-         <button 
-            style={buttonOne}
-            onClick = {this.showPersonHandler}
-            >switch Names</button>
+
+          <Button 
+            variant="contained"
+            color = 'secondary'
+            onClick = {this.showPersonHandler} 
+            style = {{ textTransform: "capitalize"  }}>
+              show Person
+          </Button>
+          <StyledButton
+              
+              alt={this.state.showPerson}
+              onClick = {this.hidePersonHandler}
+            >Hide Person</StyledButton>
 
         {
           this.state.showPerson ? 
