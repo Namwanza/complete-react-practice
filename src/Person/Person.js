@@ -13,6 +13,12 @@ const Person = (props) => {
     } else {
         styles.push('')
     }
+
+    let rnd = Math.random();
+    if (rnd > 0.9) {
+        throw Error('Something went wrong')
+    }
+
     return (
         <div>
             <p onClick = {props.deleted}> My name is: {props.name} and I'm {props.age} years old </p>

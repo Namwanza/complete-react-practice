@@ -3,7 +3,7 @@ import Person from './Person/Person'
 import './App.css';
 import Radium from 'radium';
 
-class App extends Component {
+class App extends Component { 
   state = {
     persons: [
       {id: 'hsisi', name: '', age: 27},
@@ -48,7 +48,6 @@ class App extends Component {
       ], 
     })
   }
-
 
   render () {
     const Persons = this.state.persons.map(person => {
