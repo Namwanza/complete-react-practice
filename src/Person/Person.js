@@ -14,10 +14,10 @@ const Person = (props) => {
         styles.push('')
     }
 
-    let rnd = Math.random();
-    if (rnd > 0.9) {
-        throw Error('Something went wrong')
-    }
+    // let rnd = Math.random();
+    // if (rnd > 0.9) {
+    //     throw Error('Something went wrong')
+    // }
 
     return (
         <div>

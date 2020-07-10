@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Person from './Person/Person'
 import './App.css';
 import Radium from 'radium';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component { 
   state = {
@@ -42,9 +43,9 @@ class App extends Component {
   nameHandler = (newName) => {
     this.setState({
       persons: [
-        {name: newName, age: 27},
-        {name: 'Ronnie', age: 25},
-        {name: 'Namwanza', age: 20},
+        {id: 'hsisi', name: newName, age: 27},
+        {id: 'eslkd', name: 'Ronnie', age: 25},
+        {id: 'ossk', name: 'Namwanza', age: 20},
       ], 
     })
   }
@@ -52,13 +53,14 @@ class App extends Component {
   render () {
     const Persons = this.state.persons.map(person => {
       return (
-       <Person 
-         name = {person.name} 
-         age = {person.age}
-         key = {person.id}
-         changed = {(event) => this.nameChangedHandler(event, person.id)}
-         deleted = {() => this.deletePersonHandler(person.id)}
-       />
+        <ErrorBoundary key = {person.id}>
+          <Person 
+            name = {person.name} 
+            age = {person.age}
+            changed = {(event) => this.nameChangedHandler(event, person.id)}
+            deleted = {() => this.deletePersonHandler(person.id)}
+          />
+       </ErrorBoundary>
       )
     })
 
