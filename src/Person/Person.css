@@ -1,0 +1,45 @@
+.Input-01 {
+    border: 1px solid black;
+    width: 50%;
+    background-color: chartreuse;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Input-02 {
+    border: 1px solid black;
+    width: 60%;
+    background-color: black;
+    color: chartreuse;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Input-03 {
+    border: 1px solid red;
+    width: 60%;
+    color:red;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
+input {
+    border: 1px solid black;
+}
+
+
+@media (max-width: 500px) { 
+    body {
+        max-width: 90%;
+        margin: auto;
+    }
+
+    input {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
