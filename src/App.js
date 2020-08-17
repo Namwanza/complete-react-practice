@@ -4,26 +4,48 @@ import Person from './Person/Person'
 
 class App extends Component {
   state = {
-    name: "Skyla"
+    counter: 0
   }
 
-  nameChangedHandler = () => {
+  counterHandler = () => {
     this.setState({
-      name: "Vanpretty"
+      counter: this.state.counter + 1
     })
+  }
+
+  componentWillMount() {
+    console.log('render componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('render componentDidMount')
+  }
+
+
+  shouldComponentUpdate(newProps, newState) {
+    console.log('render shouldComponentUpdate')
+    return true;
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('render componentWillUpdate')
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('render componentDidUpdate')
+  }
+
+  componentWillUnmount() {
+    console.log('render componentWillUnmount')
   }
 
   render () {
     return (
       <div className="App">
-        <span> {this.state.name} </span>
-        <button onClick = {this.nameChangedHandler} >switch Names</button>
+        <button onClick = {this.counterHandler}>switch Names</button>
         <Person 
-          assignment = "Computer Science" 
-          homework = "Arithematic operators"
-        >
-          Hey am a child
-        </Person>
+          counted = {this.state.counter}
+        />
       </div>
     );
   }
